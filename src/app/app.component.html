@@ -18,7 +18,7 @@
             <a routerLink="/welcome">Welcome</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a>Administrar Usuarios</a>
+            <a routerLink="/users">Administrar Usuarios</a>
           </li>
 
         </ul>
@@ -38,25 +38,39 @@
   </nz-sider>
   <nz-layout>
     <nz-header>
-      <div nz-flex [nzVertical]="false"
-      
-      nzJustify="space-between"
-      nzAlign="center" class="app-header" nzVertical="false"
-      nzJustify="space-between"
-      nzAlign="center">
+      <div class="app-header" nz-flex [nzVertical]="false" nzJustify="space-between" nzGap="middle" nzAlign="center" >
         <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
-            <span class="trigger"
-               nz-icon
-               [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-            ></span>
+          <span class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></span>
         </span>
-        <nz-avatar
-        nzGap=4
-        style= "background-color: #87d068; margin-right: 16px; cursor: pointer;"
-        nzText="ID"
-        nzSize="large"
+        <nz-avatar 
+        nzTooltipTitle="Iniciar Sesión" nzTooltipPlacement="bottomRight" nz-tooltip
+        nzIcon="user"
+        style= " margin-right: 16px; cursor: pointer;"
         routerLink="/login"
-      ></nz-avatar>
+        *ngIf="!isLogged(); else isLoggedTemplate"
+      >
+      </nz-avatar>
+      <ng-template #isLoggedTemplate>
+        
+        <button nz-button nz-dropdown [nzDropdownMenu]="menu">
+          <nz-avatar 
+          nzIcon="user" 
+          [nzSrc]="RegistersService.currentRegister?.photoURL"></nz-avatar>
+          <span nz-icon nzType="down"></span>
+        </button>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+          <ul nz-menu>
+            <li nz-menu-item>
+              <a>Editar Perfil</a>
+            </li>
+            <li nz-menu-item>
+              <a (click)="logout()" >Cerrar Sesión</a>
+            </li>
+          </ul>
+        </nz-dropdown-menu>
+
+        
+      </ng-template>
       </div>
     </nz-header>
     <nz-breadcrumb style="margin-top: 16px; margin-left: 18px; " nzSeparator="|">

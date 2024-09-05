@@ -59,6 +59,19 @@
     <nz-form-item nz-row class="register-area">
       <nz-form-control [nzSpan]="14" [nzOffset]="6">
         <button nz-button nzType="primary" type="button" (click)="onClickRegister()">Registrarme</button>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item nz-row class="register-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button 
+        nz-button 
+        class="login-form-button login-form-margin"
+        type="button"
+        (click)="onClickRegisterWithGoogle()"
+        >
+        <span nz-icon nzType="google" nzTheme="outline" ></span> Registrarme con Google
+    </button>
       </nz-form-control>
     </nz-form-item>
   </form>

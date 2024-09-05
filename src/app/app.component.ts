@@ -7,12 +7,17 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';    
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzFlexModule } from 'ng-zorro-antd/flex';
+import { UsersService } from './services/users/users.service';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { RegistersService } from './services/registers/registers.service';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [CommonModule, NzAvatarModule, NzFlexModule,  RouterLink, 
-  RouterOutlet, NzIconModule, NzLayoutModule, NzMenuModule, NzBreadCrumbModule
+  RouterOutlet, NzToolTipModule, NzDropDownModule ,NzIconModule, NzLayoutModule, NzMenuModule, NzBreadCrumbModule
 ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
@@ -20,4 +25,15 @@ import { NzFlexModule } from 'ng-zorro-antd/flex';
 export class AppComponent {
   isCollapsed = false;
   title = 'app-zorro-angular';
+
+  constructor(private usersService: UsersService, public RegistersService: RegistersService){}
+
+
+  isLogged(): boolean {
+    return this.usersService.getCurrentUser() != null;
+  } 
+
+  logout(){
+    this.usersService.logout();
+  }
 }

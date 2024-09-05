@@ -6,6 +6,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { RegistersService } from '../../services/registers/registers.service';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 
 
@@ -13,7 +14,7 @@ import { RegistersService } from '../../services/registers/registers.service';
   selector: 'app-registro',
   standalone: true,
   imports: [NzFormModule, NzInputModule, NzButtonModule, ReactiveFormsModule,
-    NzCheckboxModule, NzSelectModule],
+    NzCheckboxModule, NzSelectModule, NzIconModule],
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.css'
 })
@@ -40,6 +41,15 @@ export class RegistroComponent {
       const email = this.form.value.email;
       const password = this.form.value.password;
       this.registersService.createRegister({email, password}, this.form.value)
+      .then((response)=>{
+        console.log(response);
+      })
+      .catch((error)=>{console.log(error)});
+     }
+
+     onClickRegisterWithGoogle(): void  {
+      
+      this.registersService.createRegisterWithGoogle()
       .then((response)=>{
         console.log(response);
       })

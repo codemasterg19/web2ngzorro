@@ -42,10 +42,23 @@ export class UsersService {
     return this.auth.currentUser;
   }
 
-  deleteRegister(uid: string) : Promise<any> {
+ deleteRegister(uid: string) : Promise<any> {
   let user : User = {uid} as User;
   return deleteUser(user);
   }
+
+  /*deleteRegister() : Promise<any> {
+    const user = this.auth.currentUser;
+    
+    if (user) {
+      return deleteUser(user).catch((error) => {
+        console.error('Error al eliminar el usuario:', error);
+        throw error;
+      });
+    } else {
+      return Promise.reject('No hay un usuario autenticado para eliminar.');
+    }
+  }*/
 
 
 
