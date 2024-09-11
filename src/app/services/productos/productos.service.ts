@@ -22,6 +22,8 @@ export class ProductosService {
     return collectionData(productosRef, {idField: 'id'}) as Observable<Productos[]>
    }
 
+   
+
    createProductos(producto: Productos): Promise<any> {  
     const productosRef = collection(this.firestore, 'productos');
     return addDoc(productosRef, producto);    }

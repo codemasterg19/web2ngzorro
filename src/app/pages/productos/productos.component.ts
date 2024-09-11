@@ -7,12 +7,13 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 
 @Component({
   selector: 'app-productos',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, NzTableModule, FormsModule, NzPopconfirmModule,
-    NzFormModule, NzInputModule,NzButtonModule
+    NzFormModule, NzInputModule,NzButtonModule,  NzPaginationModule
   ],
   templateUrl: './productos.component.html',
   styleUrl: './productos.component.css'
@@ -20,10 +21,17 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 export class ProductosComponent {
 
   producto: Productos[] = [];
+  paginatedData: Productos[] = [];  // Datos paginados
+  currentPage = 1;  // Página actual
+  pageSize = 3;  // Tamaño de la página
   form: FormGroup;
   showForm: boolean = false;
 
   editCache: { [key: string]: { edit: boolean; data: Productos } } = {};
+
+  
+
+  
 
   constructor(private productosService: ProductosService, 
     private formBuilder: FormBuilder) {
@@ -40,8 +48,29 @@ export class ProductosComponent {
       this.productosService.getProductos().subscribe((productos) => {
         this.producto = productos;
         this.updateEditCache();
+        this.updatePaginatedData(); 
+  
+        
       })
     }
+
+     // Método para actualizar los productos que se mostrarán en la página actual
+  updatePaginatedData(): void {
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    this.paginatedData = this.producto.slice(startIndex, endIndex);
+  }
+
+  // Método para manejar el cambio de página
+  onPageChange(page: number): void {
+    this.currentPage = page;
+    this.updatePaginatedData();  // Actualiza los productos que se mostrarán en la nueva página
+  }
+
+    
+
+
+    
 
     addProducto(): void {
       if (this.form.invalid) return;
@@ -54,6 +83,7 @@ export class ProductosComponent {
             ...this.form.value,
           };
           this.producto.push(newProducto); // Añadir el nuevo producto a la lista
+          this.updatePaginatedData();  // Actualiza la paginación
           this.form.reset(); // Reiniciar el formulario
           this.showForm = false; // Ocultar el formulario después de añadir
           this.updateEditCache(); // Actualizar la caché
@@ -117,5 +147,8 @@ export class ProductosComponent {
   toggleForm(): void {
     this.showForm = !this.showForm; // Alternar la visibilidad del formulario
   }
+
+
+
 
 }

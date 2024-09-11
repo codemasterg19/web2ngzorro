@@ -69,7 +69,9 @@
   <br />
 
   <div *ngIf="!showForm">
-<nz-table #editRowTable nzBordered [nzData]="producto" nzTableLayout="fixed">
+<nz-table [nzData]="paginatedData" 
+nzBordered 
+nzTableLayout="fixed">
     <thead>
       <tr>
         <th >Producto</th>
@@ -81,7 +83,7 @@
       </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let data of producto">
+        <tr *ngFor="let data of paginatedData">
           <ng-container *ngIf="!editCache[data.id].edit; else editMode">
             <td>{{ data.nombre }}</td>
             <td>{{ data.precio }}</td>
@@ -109,4 +111,12 @@
         </tr>
       </tbody>
   </nz-table>
+ 
+  <nz-pagination 
+  [nzPageIndex]="currentPage" 
+  [nzPageSize]="pageSize" 
+  [nzTotal]="producto.length" 
+  (nzPageIndexChange)="onPageChange($event)">
+</nz-pagination>
+
   </div>
