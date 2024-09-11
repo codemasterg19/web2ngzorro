@@ -7,10 +7,12 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';    
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzFlexModule } from 'ng-zorro-antd/flex';
-import { UsersService } from './services/users/users.service';
+
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { UsersService } from './services/users/users.service';
 import { RegistersService } from './services/registers/registers.service';
+
 
 
 @Component({

@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistroComponent } from './pages/registro/registro.component';
-import { UsersComponent } from './pages/users/users.component';
+
 import { ProductosComponent } from './pages/productos/productos.component';
 import { permissionsGuard } from './guards/permissions.guard';
 import { rolesGuard } from './guards/roles.guard';
@@ -9,6 +9,7 @@ import { ProductpostComponent } from './pages/productpost/productpost.component'
 import { ProductosEmpleadoComponent } from './pages/productos-empleado/productos-empleado.component';
 import { inject } from '@angular/core';
 import { RegistersService } from './services/registers/registers.service';
+import { UsersComponent } from './pages/users/users.component';
 
 function isRoute(role?: string){
   const registerService = inject(RegistersService);
