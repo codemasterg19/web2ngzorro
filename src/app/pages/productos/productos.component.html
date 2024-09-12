@@ -71,7 +71,9 @@
   <div *ngIf="!showForm">
 <nz-table [nzData]="paginatedData" 
 nzBordered 
-nzTableLayout="fixed">
+nzTableLayout="fixed"
+[nzShowPagination]="false"
+ >
     <thead>
       <tr>
         <th >Producto</th>

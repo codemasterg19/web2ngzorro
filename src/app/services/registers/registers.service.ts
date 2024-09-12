@@ -19,7 +19,7 @@ export interface Register {
   uid: string;
   email: string;
   nickname: string;
-  photoURL: string;
+  photoURL?: string;
   phoneNumber: string;
   role: string;
 }

@@ -23,6 +23,6 @@ export const routes: Routes = [
   { path: 'registro', component: RegistroComponent},
   { path: 'users', component: UsersComponent, canActivate: [permissionsGuard]},
   { path: 'productos', component: ProductosComponent, canActivate: [permissionsGuard]},
-  { path: 'productospostgres', component: ProductpostComponent, canMatch: [() => isRoute('Admin')]}, //canMatch: [rolesGuard]},
-  { path: 'productospostgres', component: ProductosEmpleadoComponent, canMatch: [() => isRoute('Empleado')]}, //canMatch: [rolesGuard]},
+  { path: 'productospostgres', component: ProductpostComponent, canMatch: [rolesGuard]},//canMatch: [() => isRoute('Admin')]}, //
+  { path: 'productospostgres', component: ProductosEmpleadoComponent, canMatch: [rolesGuard]},// canMatch: [() => isRoute('Empleado')]}, //
 ];

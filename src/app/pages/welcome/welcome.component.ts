@@ -7,14 +7,39 @@ import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { PaypalService } from '../../services/paypal/paypal.service';
 import { ActivatedRoute } from '@angular/router';
 
+
+import { NgModule } from '@angular/core';
+
+import { RouterModule, Routes } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
+// NG-ZORRO Modules
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzStatisticModule } from 'ng-zorro-antd/statistic';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+
+
+
+
 @Component({
   selector: 'app-welcome',
   standalone: true,
-  imports: [NzFlexModule, CommonModule, NzDividerModule, NzStepsModule, NzMenuModule ],
+  imports: [NzFlexModule, CommonModule, NzDividerModule, NzStepsModule, NzMenuModule,
+    NzLayoutModule, NzCardModule, NzStatisticModule, NzButtonModule, NzIconModule, ReactiveFormsModule, 
+    RouterModule, FormsModule,NzMenuModule
+
+    
+  ],
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
+
+  totalProducts: number = 0;
+  totalUsers: number = 0;
 
   constructor(private paypalService: PaypalService, private route: ActivatedRoute) { }
 
@@ -24,6 +49,9 @@ export class WelcomeComponent implements OnInit {
       console.log(params['paymentId']);
     });
   }
+
+
+
 
   pay(): void{
     this.paypalService.getAccessToken()

@@ -1,14 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment.development';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmailService {
-  private apiUrl = 'environment.apiUrl';
-  private apiKey = 'environment.apiKey';
+  private apiUrl = 'https://api.brevo.com/v3/smtp/email';
+  private apiKey = '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';
  
   constructor(private http: HttpClient) { }
  

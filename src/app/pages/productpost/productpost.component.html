@@ -1,6 +1,6 @@
 <form nz-form [formGroup]="form" (ngSubmit)="onClickSubmit()">
     <nz-form-item>
-        <nz-form-label nzRequired nzLabelAlign="left" nzSpan="4">Nombre</nz-form-label>
+        <nz-form-label nzRequired nzLabelAlign="right" nzSpan="4">Nombre</nz-form-label>
         <nz-form-control nzErrorTip="Por favor ingrese el nombre del producto" nzSpan="8">
             <input formControlName="nombre" nz-input placeholder="Nombre del Producto" />
         </nz-form-control>
@@ -20,7 +20,7 @@
     <button nz-button nzType="primary" type="submit">Agregar Producto</button>
 </form>
  
-<nz-table #editRowTable nzBordered [nzData]="productos" >
+<nz-table #editRowTable nzBordered [nzData]="paginatedData" [nzShowPagination]="false">
     <thead>
         <tr>
             <th nzWidth="25%">Nombre</th>
@@ -31,7 +31,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let producto of productos;">
+        <tr *ngFor="let producto of paginatedData;">
             <td>{{ producto.nombre }}</td>
             <td>{{ producto.descripcion }}</td>
             <td>{{ producto.precio }}</td>
@@ -40,5 +40,12 @@
         </tr>
     </tbody>
 </nz-table>
+
+<nz-pagination 
+  [nzPageIndex]="currentPage" 
+  [nzPageSize]="pageSize" 
+  [nzTotal]="productos.length" 
+  (nzPageIndexChange)="onPageChange($event)">
+</nz-pagination>
 
  

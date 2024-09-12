@@ -1,0 +1,40 @@
+/* welcome.component.css */
+
+/* Styles for the header */
+.nz-header {
+    background: #001529;
+    padding: 0;
+  }
+  
+  .logo {
+    color: #fff;
+    font-size: 20px;
+    padding: 16px;
+    text-align: center;
+  }
+  
+  /* Styles for the content */
+  .welcome-container {
+    padding: 24px;
+    background: #f0f2f5;
+    text-align: center;
+  }
+  
+  .welcome-container h1 {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  
+  .welcome-container p {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  /* Styles for the footer */
+  .nz-footer {
+    background: #001529;
+    color: #fff;
+    text-align: center;
+    padding: 16px;
+  }
+  

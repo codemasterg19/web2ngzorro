@@ -28,8 +28,8 @@ export class UsersComponent {
     this.emailService.sendEmail(
       register.email,
       register.nickname,
-      '<b>Este es el contenido del correo</b>',
-      'Bienvenido'
+      '<b>Para restablecer la contraseña siga el link:</b>',
+      'Recuperar Contraseña'
     ).subscribe(response => console.log(response));
   }
 

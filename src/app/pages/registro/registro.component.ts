@@ -65,7 +65,7 @@ export class RegistroComponent {
     confirmationValidator: ValidatorFn = (control: AbstractControl): { [s: string]: boolean } => {
       if (!control.value) {
         return { required: true };
-      } else if (control.value !== this.form.value.password.value) {
+      } else if (control.value === this.form.value.password.value) {
         return { confirm: true, error: true };
       }
       return {};
