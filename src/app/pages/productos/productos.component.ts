@@ -40,7 +40,7 @@ export class ProductosComponent {
         imagen: ["", Validators.required],
         precio: ["", Validators.required],
         stock: ["", Validators.required],
-        descripcion: ["", Validators.required, Validators.minLength(20)]
+        descripcion: ["", [Validators.required, Validators.minLength(20)]]
       })
      }
 

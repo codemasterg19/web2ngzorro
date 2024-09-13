@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class EmailService {
   private apiUrl = 'https://api.brevo.com/v3/smtp/email';
-  private apiKey = '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';
+  private apiKey = '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';
  
   constructor(private http: HttpClient) { }
  
